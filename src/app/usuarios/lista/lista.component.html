@@ -1,0 +1,30 @@
+
+
+
+
+@if(!loading && !error){
+<div class="row row-cols-1 row-cols-md-6 g-3">
+    @for(user of usuarios; track user){
+    <div class="col">
+      <div class="card" (click)="irA(user.id)">
+        <img [src]="user.avatar" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{user.first_name+ ' ' +user.last_name}}</h5>
+          <p class="card-text">ID: {{user.id}}</p>
+        </div>
+      </div>
+    </div>
+    }
+</div>
+}
+@if(loading){
+  <div class="alert alert-primary text-center" role="alert">
+    ...Cargando...
+  </div>
+}
+@if(error){
+  <div class="alert alert-danger text-center" role="alert">
+    Error<br>
+    {{error | json}}
+  </div>
+}
